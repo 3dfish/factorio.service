@@ -1,0 +1,14 @@
+[Unit]
+Description=open a factorio server
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -s /bin/bash -dm -S factorio /bin/bash /home/wwjjack/factorio/start.sh
+ExecStop=/usr/bin/screen -S factorio -X stuff ^c
+KillMode=none
+WorkingDirectory=/home/wwjjack/factorio
+Restart=on-failure
+User=wwjjack
+
+[Install]
+WantedBy=multi-user.target
